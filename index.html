@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joy Irine Barnayha — Operations & GHL Automation Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c14;
+      --bg2:       #0e1420;
+      --bg3:       #141c2e;
+      --gold:      #c9a84c;
+      --gold-lt:   #e8c96e;
+      --gold-dim:  rgba(201,168,76,0.15);
+      --white:     #f4f4f6;
+      --muted:     #7a849a;
+      --border:    rgba(201,168,76,0.18);
+      --radius:    14px;
+      --transition: 0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 6%;
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); font-size: 0.88rem; text-decoration: none;
+      font-weight: 500; letter-spacing: 0.4px;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      padding: 0.5rem 1.3rem;
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      color: var(--gold) !important;
+      font-size: 0.85rem !important;
+      transition: background var(--transition), color var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--bg) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 7rem 6% 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,168,76,0.07) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; max-width: 780px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); background: var(--gold-dim);
+      margin-bottom: 1.8rem;
+    }
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p {
+      font-size: 1.05rem; color: var(--muted); max-width: 560px;
+      margin: 0 auto 2.4rem; line-height: 1.75;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, var(--gold), #a8782c);
+      color: #080c14; font-weight: 700; font-size: 0.9rem;
+      border: none; border-radius: 50px; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.3px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.35); }
+    .btn-outline {
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--white); font-weight: 600; font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.3px;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 3rem;
+      margin-top: 4rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold);
+      display: block;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 7rem 6%; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700; line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 520px; line-height: 1.75; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg2); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+    .about-card-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #a8782c);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #080c14; font-weight: 700;
+    }
+    .about-card-name { font-weight: 600; font-size: 1rem; }
+    .about-card-role { font-size: 0.8rem; color: var(--gold); }
+    .about-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      padding: 0.3rem 0.8rem;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      border-radius: 50px; font-size: 0.75rem; color: var(--gold); font-weight: 500;
+    }
+    .about-float {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .float-icon { font-size: 1.5rem; }
+    .float-text { font-size: 0.8rem; color: var(--muted); }
+    .float-text strong { color: var(--white); font-size: 0.95rem; display: block; }
+    .about-text .section-sub { max-width: 100%; margin-top: 1.2rem; }
+    .feature-list { list-style: none; margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.9rem; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.92rem; }
+    .feature-list li::before {
+      content: '✦'; color: var(--gold); font-size: 0.7rem; margin-top: 0.25rem; flex-shrink: 0;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--bg); }
+    .services-header { max-width: 1100px; margin: 0 auto 4rem; }
+    .services-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      transition: border-color var(--transition), transform var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .service-card:hover { border-color: var(--border); transform: translateY(-4px); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.4rem;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .service-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+    .service-features { list-style: none; margin-top: 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .service-features li { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+    .service-features li::before { content: '→'; color: var(--gold); font-size: 0.75rem; }
+
+    /* ── FUNNELS ── */
+    .funnels { background: var(--bg2); }
+    .funnels-inner { max-width: 1100px; margin: 0 auto; }
+    .funnels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3.5rem; }
+    .funnel-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2.5rem; position: relative; overflow: hidden;
+    }
+    .funnel-num {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 700;
+      color: rgba(201,168,76,0.06); line-height: 1; user-select: none;
+    }
+    .funnel-tag {
+      display: inline-block; padding: 0.25rem 0.75rem;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      border-radius: 50px; font-size: 0.72rem; color: var(--gold);
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .funnel-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .funnel-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; }
+    .funnel-steps { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .funnel-steps li {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.87rem;
+    }
+    .step-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* ── INTEGRATIONS ── */
+    .integrations { background: var(--bg); }
+    .integrations-inner { max-width: 1100px; margin: 0 auto; }
+    .int-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem;
+    }
+    .int-card {
+      background: var(--bg2); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 2rem;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      transition: border-color var(--transition);
+    }
+    .int-card:hover { border-color: var(--border); }
+    .int-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 10px; background: var(--gold-dim);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .int-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .int-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── PROCESS ── */
+    .process { background: var(--bg2); }
+    .process-inner { max-width: 900px; margin: 0 auto; }
+    .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 3.5rem; }
+    .process-step {
+      display: grid; grid-template-columns: 80px 1fr; gap: 2rem; align-items: stretch;
+    }
+    .step-left { display: flex; flex-direction: column; align-items: center; }
+    .step-num-circle {
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; color: var(--gold);
+      background: var(--bg2); z-index: 1;
+    }
+    .step-line { flex: 1; width: 2px; background: var(--border); margin: 0.5rem 0; }
+    .process-step:last-child .step-line { display: none; }
+    .step-content { padding: 0 0 3rem 0; }
+    .step-content h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; padding-top: 0.65rem; }
+    .step-content p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--bg);
+      padding: 7rem 6%;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+    .cta-inner { position: relative; max-width: 620px; margin: 0 auto; }
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
+    }
+    .cta p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 2.5rem; }
+    .cta-contacts { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-pill {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.7rem 1.4rem;
+      border: 1px solid var(--border); border-radius: 50px;
+      color: var(--white); font-size: 0.87rem; text-decoration: none;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .contact-pill:hover { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); }
+    .contact-pill span { font-size: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 6%;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--gold);
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-float { display: none; }
+      .funnels-grid { grid-template-columns: 1fr; }
+      .int-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 5%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 5rem 5%; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    /* ── FADE-IN ANIMATION ── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Joy Irine</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#funnels">Funnels</a></li>
+    <li><a href="#integrations">Integrations</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> Available for Work — Full-time & Part-time</div>
+    <h1>Operations & <em>GoHighLevel</em><br>Automation Specialist</h1>
+    <p>I help growing businesses build structured systems that manage leads, automate follow-ups, and streamline operations for better conversions.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">View My Services</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">12K+</span><span class="stat-label">Emails Managed</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Lead Capture</span></div>
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Funnel Systems</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual fade-up">
+      <div class="about-card">
+        <div class="about-card-header">
+          <div class="avatar">JI</div>
+          <div>
+            <div class="about-card-name">Joy Irine Barnayha</div>
+            <div class="about-card-role">Operations & GHL Specialist</div>
+          </div>
+        </div>
+        <p>Bridging AI conversation with backend execution. I architect high-ticket systems for high-ticket results — combining automation, CRM mastery, and technical integrations into seamless business workflows.</p>
+        <div class="tag-row">
+          <span class="tag">GoHighLevel</span>
+          <span class="tag">CRM Automation</span>
+          <span class="tag">Lead Funnels</span>
+          <span class="tag">Google Workspace</span>
+          <span class="tag">Webhooks & API</span>
+          <span class="tag">Cloudinary</span>
+        </div>
+      </div>
+      <div class="about-float">
+        <div class="float-icon">⚡</div>
+        <div class="float-text"><strong>Zero Missed Leads</strong>Instant capture & pipeline tracking</div>
+      </div>
+    </div>
+    <div class="about-text fade-up">
+      <span class="section-label">Who I Am</span>
+      <h2 class="section-title">Systems that convert, not just collect</h2>
+      <p class="section-sub">I build comprehensive systems that capture, organize, and convert leads through structured pipelines and efficient communication workflows.</p>
+      <ul class="feature-list">
+        <li>Automated follow-up sequences via SMS and email that keep leads engaged without manual effort</li>
+        <li>Appointment scheduling with no-show reduction reminders to protect your calendar</li>
+        <li>Structured pipeline tracking so no lead slips through the cracks</li>
+        <li>Real-time data sync via webhooks into Google Sheets for full visibility</li>
+        <li>Social media oversight with sales-driven property marketing on Facebook</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header fade-up">
+    <span class="section-label">What I Do</span>
+    <h2 class="section-title">Core Services</h2>
+    <p class="section-sub">End-to-end automation and operations solutions designed for businesses that don't settle for average results.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">🎯</div>
+      <h3>Lead Capture & Organization</h3>
+      <p>Automated systems that capture every inbound lead and instantly sort them into the right pipeline stage.</p>
+      <ul class="service-features">
+        <li>Instant lead capture from all sources</li>
+        <li>Automated pipeline assignment</li>
+        <li>Duplicate prevention & data hygiene</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📩</div>
+      <h3>Automated Follow-Up Systems</h3>
+      <p>Multi-channel follow-up sequences via SMS and email that nurture leads on autopilot until they're ready to convert.</p>
+      <ul class="service-features">
+        <li>SMS & email drip sequences</li>
+        <li>Personalized messaging at scale</li>
+        <li>Re-engagement workflows</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📅</div>
+      <h3>Appointment Scheduling</h3>
+      <p>Frictionless booking flows with automated reminders that dramatically reduce no-show rates.</p>
+      <ul class="service-features">
+        <li>Seamless calendar integration</li>
+        <li>Automated reminder sequences</li>
+        <li>Post-appointment follow-up</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🔁</div>
+      <h3>GHL Pipeline Management</h3>
+      <p>Full GoHighLevel CRM setup and pipeline architecture tailored to your sales process and business model.</p>
+      <ul class="service-features">
+        <li>Custom pipeline stage design</li>
+        <li>Workflow & trigger automation</li>
+        <li>Reporting & performance tracking</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📊</div>
+      <h3>Email & Calendar Operations</h3>
+      <p>High-volume inbox management using Google Workspace — keeping your communications structured and zero-stress.</p>
+      <ul class="service-features">
+        <li>Inbox triage & organization</li>
+        <li>Template & response management</li>
+        <li>Calendar coordination</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📱</div>
+      <h3>Social Media Management</h3>
+      <p>Facebook page oversight and property marketing designed to drive inquiries and generate qualified leads.</p>
+      <ul class="service-features">
+        <li>Content scheduling & posting</li>
+        <li>Sales-driven property promotion</li>
+        <li>Engagement & response management</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FUNNELS -->
+<section class="funnels" id="funnels">
+  <div class="funnels-inner">
+    <div class="fade-up">
+      <span class="section-label">Conversion Systems</span>
+      <h2 class="section-title">Lead Conversion Funnels</h2>
+      <p class="section-sub">Two distinct funnel architectures built for different buyer stages — from exploration to ready-to-buy.</p>
+    </div>
+    <div class="funnels-grid">
+      <div class="funnel-card fade-up">
+        <div class="funnel-num">01</div>
+        <div class="funnel-tag">Consultation-Driven</div>
+        <h3>Pain Point Funnel</h3>
+        <p>Designed for prospects in the exploration phase who need to understand why your solution solves their specific problem before they're ready to commit.</p>
+        <ul class="funnel-steps">
+          <li><span class="step-dot"></span> Targeted ad or organic entry point</li>
+          <li><span class="step-dot"></span> Pain-aware landing page with opt-in</li>
+          <li><span class="step-dot"></span> Instant consultation booking post-submission</li>
+          <li><span class="step-dot"></span> Automated follow-up if no show</li>
+        </ul>
+      </div>
+      <div class="funnel-card fade-up">
+        <div class="funnel-num">02</div>
+        <div class="funnel-tag">Ready Buyer-Driven</div>
+        <h3>Luxury Property Funnel</h3>
+        <p>Built for high-intent purchasers who are actively looking. Showcases premium properties with a streamlined path to viewing booking.</p>
+        <ul class="funnel-steps">
+          <li><span class="step-dot"></span> Premium visual property showcase</li>
+          <li><span class="step-dot"></span> Qualification micro-form</li>
+          <li><span class="step-dot"></span> Direct viewing appointment booking</li>
+          <li><span class="step-dot"></span> CRM pipeline entry & follow-up trigger</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations" id="integrations">
+  <div class="integrations-inner">
+    <div class="fade-up">
+      <span class="section-label">Technical Stack</span>
+      <h2 class="section-title">Advanced Integrations</h2>
+      <p class="section-sub">Behind every smooth operation is a technical backbone. Here's how I connect the tools that power your business.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card fade-up">
+        <div class="int-icon">🔗</div>
+        <div>
+          <h4>Real-Time Data Sync via Webhooks</h4>
+          <p>Custom webhook configurations that capture leads instantly and push structured data into Google Sheets for real-time visibility and reporting.</p>
+        </div>
+      </div>
+      <div class="int-card fade-up">
+        <div class="int-icon">🖼️</div>
+        <div>
+          <h4>API-Driven Asset Management</h4>
+          <p>Automated workflows that process property details and optimize images via Cloudinary — keeping listings polished and consistent without manual effort.</p>
+        </div>
+      </div>
+      <div class="int-card fade-up">
+        <div class="int-icon">📧</div>
+        <div>
+          <h4>Google Workspace Operations</h4>
+          <p>Managing high-volume inboxes (12,000+ emails) using Google Workspace tools — structured filters, labels, and automated responses for clean communication.</p>
+        </div>
+      </div>
+      <div class="int-card fade-up">
+        <div class="int-icon">📘</div>
+        <div>
+          <h4>Facebook Business Management</h4>
+          <p>Oversight of Facebook business pages with a focus on sales-driven property marketing — content strategy, posting cadence, and lead generation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="fade-up">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title">My Process</h2>
+      <p class="section-sub">From discovery to fully automated — a structured approach that ensures nothing is missed.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step fade-up">
+        <div class="step-left"><div class="step-num-circle">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <h4>Discovery & Audit</h4>
+          <p>We map your current lead flow, identify gaps, and define the outcomes you need — clarity before any build begins.</p>
+        </div>
+      </div>
+      <div class="process-step fade-up">
+        <div class="step-left"><div class="step-num-circle">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <h4>System Architecture</h4>
+          <p>Design the pipeline stages, automation triggers, and funnel structure tailored to your business model and buyer journey.</p>
+        </div>
+      </div>
+      <div class="process-step fade-up">
+        <div class="step-left"><div class="step-num-circle">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <h4>Build & Integrate</h4>
+          <p>Build out the GHL workflows, connect integrations (webhooks, APIs, Google Sheets), and wire up the funnel pages.</p>
+        </div>
+      </div>
+      <div class="process-step fade-up">
+        <div class="step-left"><div class="step-num-circle">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <h4>Test & Launch</h4>
+          <p>Full end-to-end testing of every trigger, automation, and integration before going live — zero surprises on launch day.</p>
+        </div>
+      </div>
+      <div class="process-step fade-up">
+        <div class="step-left"><div class="step-num-circle">5</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <h4>Optimize & Support</h4>
+          <p>Post-launch monitoring, performance review, and iteration to continuously improve conversion rates and efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-inner fade-up">
+    <span class="section-label">Get Started</span>
+    <h2>Ready to build your <em style="font-style:normal;color:var(--gold)">conversion machine?</em></h2>
+    <p>I'm available for full-time and part-time engagements. Let's talk about your business and build the system that gets you results.</p>
+    <div class="cta-contacts">
+      <a href="mailto:jirine0301@gmail.com" class="contact-pill"><span>✉️</span> jirine0301@gmail.com</a>
+      <a href="tel:+639204826475" class="contact-pill"><span>📞</span> +63 920 482 6475</a>
+      <a href="https://wa.me/09204826475" class="contact-pill" target="_blank"><span>💬</span> WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Joy Irine Barnayha</div>
+  <span class="footer-copy">© 2025 Joy Irine Barnayha. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#funnels">Funnels</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Mobile nav toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '70px';
+    navLinks.style.right = '5%';
+    navLinks.style.background = 'var(--bg2)';
+    navLinks.style.border = '1px solid var(--border)';
+    navLinks.style.borderRadius = '12px';
+    navLinks.style.padding = '1rem 1.5rem';
+    navLinks.style.gap = '1rem';
+  });
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     VOICE AI TWIN WIDGET — appended, no existing code changed
+     ═══════════════════════════════════════════════════ -->
+<style>
+  /* ── CHAT TOGGLE BUTTON ── */
+  #chat-toggle-btn {
+    position: fixed; bottom: 28px; right: 28px; z-index: 999;
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0.75rem 1.3rem 0.75rem 0.9rem;
+    background: linear-gradient(135deg, #c9a84c, #a8782c);
+    border: none; border-radius: 50px; cursor: pointer;
+    box-shadow: 0 8px 32px rgba(201,168,76,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  #chat-toggle-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(201,168,76,0.5); }
+  #chat-toggle-btn .tb-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(8,12,20,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 0.85rem;
+    font-weight: 700; color: #fff; flex-shrink: 0;
+  }
+  #chat-toggle-btn .tb-text { text-align: left; }
+  #chat-toggle-btn .tb-label { font-size: 0.82rem; font-weight: 700; color: #080c14; display: block; line-height: 1.2; }
+  #chat-toggle-btn .tb-sub { font-size: 0.7rem; color: rgba(8,12,20,0.65); }
+  #chat-toggle-btn .tb-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e; border: 2px solid #a8782c;
+    position: absolute; top: 6px; right: 28px;
+    animation: glow 2s infinite;
+  }
+  @keyframes glow { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)} 50%{box-shadow:0 0 0 5px rgba(34,197,94,0)} }
+
+  /* ── CHAT PANEL ── */
+  #chat-panel {
+    position: fixed; bottom: 0; right: 0; z-index: 1000;
+    width: 390px; height: 600px; max-height: 90vh;
+    background: #0e1420;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px 20px 0 0;
+    display: flex; flex-direction: column;
+    box-shadow: -8px 0 60px rgba(0,0,0,0.5);
+    transform: translateY(110%);
+    transition: transform 0.42s cubic-bezier(.4,0,.2,1);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  #chat-panel.open { transform: translateY(0); }
+
+  /* header */
+  #chat-header {
+    padding: 1.1rem 1.3rem;
+    background: #080c14;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex; align-items: center; gap: 0.85rem;
+    flex-shrink: 0;
+  }
+  #chat-header .ch-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, #c9a84c, #a8782c);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1rem;
+    font-weight: 700; color: #080c14; flex-shrink: 0; position: relative;
+  }
+  #chat-header .ch-avatar::after {
+    content: ''; position: absolute; bottom: 1px; right: 1px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #22c55e; border: 2px solid #080c14;
+  }
+  #chat-header .ch-info { flex: 1; }
+  #chat-header .ch-name {
+    font-weight: 700; font-size: 0.95rem; color: #f4f4f6;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  #chat-header .ch-badge {
+    font-size: 0.62rem; padding: 0.15rem 0.5rem;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50px; color: #c9a84c; font-weight: 600; letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  #chat-header .ch-status { font-size: 0.75rem; color: #22c55e; margin-top: 1px; }
+  #chat-close-btn {
+    background: none; border: none; cursor: pointer;
+    color: #7a849a; font-size: 1.2rem; padding: 0.3rem;
+    border-radius: 6px; transition: color 0.2s, background 0.2s;
+    line-height: 1;
+  }
+  #chat-close-btn:hover { color: #f4f4f6; background: rgba(255,255,255,0.06); }
+
+  /* intro strip */
+  #chat-intro {
+    padding: 0.85rem 1.3rem;
+    background: rgba(201,168,76,0.06);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    font-size: 0.8rem; color: #7a849a; line-height: 1.55; flex-shrink: 0;
+  }
+
+  /* messages */
+  #chat-messages {
+    flex: 1; overflow-y: auto; padding: 1.2rem 1.1rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    scroll-behavior: smooth;
+  }
+  #chat-messages::-webkit-scrollbar { width: 4px; }
+  #chat-messages::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 2px; }
+
+  .msg { display: flex; gap: 0.6rem; align-items: flex-end; max-width: 88%; }
+  .msg.bot { align-self: flex-start; }
+  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+  .msg-av {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, #c9a84c, #a8782c);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 700; color: #080c14;
+    font-family: 'Playfair Display', serif;
+  }
+  .msg-bubble {
+    padding: 0.7rem 1rem; border-radius: 16px;
+    font-size: 0.86rem; line-height: 1.6; max-width: 100%;
+  }
+  .msg.bot .msg-bubble {
+    background: #141c2e; color: #f4f4f6;
+    border-radius: 4px 16px 16px 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .msg.user .msg-bubble {
+    background: linear-gradient(135deg, #c9a84c, #a8782c);
+    color: #080c14; font-weight: 500;
+    border-radius: 16px 4px 16px 16px;
+  }
+
+  /* typing indicator */
+  #typing-indicator {
+    display: none; align-self: flex-start;
+    align-items: flex-end; gap: 0.6rem;
+  }
+  #typing-indicator.show { display: flex; }
+  .typing-bubble {
+    background: #141c2e; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px 16px 16px 16px;
+    padding: 0.65rem 0.9rem;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .typing-bubble span {
+    width: 6px; height: 6px; border-radius: 50%; background: #7a849a;
+    animation: bounce 1.2s infinite;
+    display: inline-block;
+  }
+  .typing-bubble span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-bubble span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+  /* quick replies */
+  #quick-replies {
+    padding: 0.7rem 1.1rem 0;
+    display: flex; flex-wrap: wrap; gap: 0.4rem; flex-shrink: 0;
+  }
+  .quick-btn {
+    padding: 0.35rem 0.8rem; border-radius: 50px;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.06);
+    color: #c9a84c; font-size: 0.76rem; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .quick-btn:hover { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.6); }
+
+  /* input */
+  #chat-input-area {
+    padding: 0.9rem 1.1rem; border-top: 1px solid rgba(201,168,76,0.1);
+    background: #080c14; flex-shrink: 0;
+    display: flex; gap: 0.6rem; align-items: flex-end;
+  }
+  #chat-input {
+    flex: 1; background: #141c2e; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 0.65rem 0.9rem;
+    color: #f4f4f6; font-size: 0.87rem; font-family: 'Inter', sans-serif;
+    resize: none; max-height: 100px; overflow-y: auto; line-height: 1.5;
+    outline: none; transition: border-color 0.2s;
+  }
+  #chat-input:focus { border-color: rgba(201,168,76,0.4); }
+  #chat-input::placeholder { color: #7a849a; }
+  #chat-send-btn {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, #c9a84c, #a8782c);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  #chat-send-btn:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
+  #chat-send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* mobile */
+  @media (max-width: 480px) {
+    #chat-panel { width: 100%; border-radius: 20px 20px 0 0; height: 85vh; }
+    #chat-toggle-btn { right: 16px; bottom: 16px; }
+  }
+</style>
+
+<!-- Chat Toggle Button -->
+<button id="chat-toggle-btn" aria-label="Chat with Joy's AI Twin">
+  <div class="tb-dot"></div>
+  <div class="tb-avatar">JI</div>
+  <div class="tb-text">
+    <span class="tb-label">Talk to Joy's AI</span>
+    <span class="tb-sub">Ask me anything</span>
+  </div>
+</button>
+
+<!-- Chat Panel -->
+<div id="chat-panel" role="dialog" aria-label="Joy AI Twin Chat">
+  <div id="chat-header">
+    <div class="ch-avatar">JI</div>
+    <div class="ch-info">
+      <div class="ch-name">Joy Irine <span class="ch-badge">AI Twin</span></div>
+      <div class="ch-status">● Online now</div>
+    </div>
+    <button id="chat-close-btn" aria-label="Close chat">✕</button>
+  </div>
+  <div id="chat-intro">
+    Hi! I'm Joy's AI Twin. I can answer questions about her services, experience, and how she can help your business — just like talking to Joy herself.
+  </div>
+  <div id="chat-messages">
+    <div class="msg bot">
+      <div class="msg-av">JI</div>
+      <div class="msg-bubble">Hey there! I'm Joy's AI Twin 👋 I'm here to answer any questions about my services, how I can help your business, or how we can work together. What would you like to know?</div>
+    </div>
+  </div>
+  <div id="typing-indicator">
+    <div class="msg-av" style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#a8782c);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#080c14;font-family:'Playfair Display',serif;flex-shrink:0;">JI</div>
+    <div class="typing-bubble"><span></span><span></span><span></span></div>
+  </div>
+  <div id="quick-replies">
+    <button class="quick-btn" data-msg="What services do you offer?">Services</button>
+    <button class="quick-btn" data-msg="Tell me about your funnels">Funnels</button>
+    <button class="quick-btn" data-msg="Are you available for work?">Availability</button>
+    <button class="quick-btn" data-msg="How do we get started?">Get Started</button>
+  </div>
+  <div id="chat-input-area">
+    <textarea id="chat-input" rows="1" placeholder="Ask Joy anything…" aria-label="Your message"></textarea>
+    <button id="chat-send-btn" aria-label="Send message">➤</button>
+  </div>
+</div>
+
+<script>
+  // ── AI TWIN CONFIG ──
+  const CHAT_API = 'http://localhost:3001/chat'; // point to your backend
+
+  const toggleBtn   = document.getElementById('chat-toggle-btn');
+  const panel       = document.getElementById('chat-panel');
+  const closeBtn    = document.getElementById('chat-close-btn');
+  const messagesEl  = document.getElementById('chat-messages');
+  const typingEl    = document.getElementById('typing-indicator');
+  const inputEl     = document.getElementById('chat-input');
+  const sendBtn     = document.getElementById('chat-send-btn');
+  const quickBtns   = document.querySelectorAll('.quick-btn');
+
+  let history = []; // {role, content}[]
+  let isOpen  = false;
+
+  function openPanel()  { isOpen = true;  panel.classList.add('open');    toggleBtn.style.display = 'none'; }
+  function closePanel() { isOpen = false; panel.classList.remove('open'); toggleBtn.style.display = 'flex'; }
+
+  toggleBtn.addEventListener('click', openPanel);
+  closeBtn.addEventListener('click', closePanel);
+
+  function appendMsg(role, text) {
+    const wrap = document.createElement('div');
+    wrap.className = `msg ${role}`;
+    if (role === 'bot') wrap.innerHTML = `<div class="msg-av">JI</div><div class="msg-bubble">${escHtml(text)}</div>`;
+    else                wrap.innerHTML = `<div class="msg-bubble">${escHtml(text)}</div>`;
+    messagesEl.appendChild(wrap);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  }
+
+  function showTyping()  { messagesEl.appendChild(typingEl); typingEl.classList.add('show'); messagesEl.scrollTop = messagesEl.scrollHeight; }
+  function hideTyping()  { typingEl.classList.remove('show'); }
+
+  async function send(text) {
+    const msg = text.trim();
+    if (!msg || sendBtn.disabled) return;
+
+    appendMsg('user', msg);
+    history.push({ role: 'user', content: msg });
+
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+    sendBtn.disabled = true;
+    document.getElementById('quick-replies').style.display = 'none';
+    showTyping();
+
+    try {
+      const res = await fetch(CHAT_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      if (!res.ok) throw new Error('Server error');
+      const data = await res.json();
+      hideTyping();
+      appendMsg('bot', data.message);
+      history.push({ role: 'assistant', content: data.message });
+    } catch (err) {
+      hideTyping();
+      appendMsg('bot', "Sorry, I'm having a little trouble connecting right now. Please reach out directly at jirine0301@gmail.com or WhatsApp +63 920 482 6475!");
+    }
+
+    sendBtn.disabled = false;
+    inputEl.focus();
+  }
+
+  sendBtn.addEventListener('click', () => send(inputEl.value));
+
+  inputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(inputEl.value); }
+  });
+
+  inputEl.addEventListener('input', () => {
+    inputEl.style.height = 'auto';
+    inputEl.style.height = inputEl.scrollHeight + 'px';
+  });
+
+  // replaced by voice widget below
+</script>
+</body>
+</html>
